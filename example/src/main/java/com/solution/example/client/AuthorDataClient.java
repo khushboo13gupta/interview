@@ -1,10 +1,10 @@
 package com.solution.example.client;
 
 import com.solution.example.model.AuthorRequestData;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
-@Service
+@Component
 public class AuthorDataClient {
 
     private final RestClient restClient;
