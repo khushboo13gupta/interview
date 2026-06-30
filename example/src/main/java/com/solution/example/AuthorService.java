@@ -14,13 +14,14 @@ public class AuthorService {
 
     private AuthorDataClient authorDataClient;
 
-    public List<AuthorRequest> getHighCommentsAuthorRequest(final AuthorRequestData authorRequestData, final int submissionThreshold) {
+    public List<String> getHighCommentsAuthorRequest(final AuthorRequestData authorRequestData, final int submissionThreshold) {
         return authorRequestData.getData().stream()
                 .filter(authorRequest -> authorRequest.getSubmissionCount() > submissionThreshold)
+                .map(AuthorRequest::getUsername)
                 .toList();
     }
 
-    public AuthorRequestData getAuthorRequestData(final int pageNumber) {
-        return authorDataClient.getAuthorRequestData(pageNumber);
+    public AuthorRequestData getAuthorRequestData() {
+        return authorDataClient.getAuthorRequestData(1);
     }
 }

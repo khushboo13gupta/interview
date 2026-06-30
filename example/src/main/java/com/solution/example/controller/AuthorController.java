@@ -17,9 +17,9 @@ public class AuthorController {
 
     private AuthorService authorService;
 
-    @GetMapping("/high_comments/{page}/{submissionThreshold}")
-    public List<AuthorRequest> getHighCommentsAuthorRequest(@PathVariable int pageNumber, @PathVariable int submissionThreshold) {
-        return authorService.getHighCommentsAuthorRequest(authorService.getAuthorRequestData(pageNumber), submissionThreshold);
+    @GetMapping("/high_comments/{submissionThreshold}")
+    public List<String> getHighCommentsAuthorRequest(@PathVariable int submissionThreshold) {
+        return authorService.getHighCommentsAuthorRequest(authorService.getAuthorRequestData(), submissionThreshold);
     }
 
 }
