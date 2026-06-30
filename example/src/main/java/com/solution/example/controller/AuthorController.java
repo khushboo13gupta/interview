@@ -2,7 +2,6 @@ package com.solution.example.controller;
 
 import com.solution.example.AuthorService;
 import com.solution.example.model.AuthorRequest;
-import com.solution.example.model.AuthorRequestData;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +19,7 @@ public class AuthorController {
 
     @GetMapping("/high_comments/{page}/{submissionThreshold}")
     public List<AuthorRequest> getHighCommentsAuthorRequest(@PathVariable int pageNumber, @PathVariable int submissionThreshold) {
-        return authorService.getHighCommentsAuthorRequest(getAuthorRequestData(pageNumber), submissionThreshold);
+        return authorService.getHighCommentsAuthorRequest(authorService.getAuthorRequestData(pageNumber), submissionThreshold);
     }
 
-    @GetMapping("search/{page}")
-    public AuthorRequestData getAuthorRequestData(@PathVariable int pageNumber) {
-        return authorService.getAuthorRequestData();
-    }
 }
